@@ -1,0 +1,24 @@
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = '.')
+```
+
+------------------------------------------------------------------------
+
+---
+title: "Travail de session"
+author: "Claude Alie"
+date: "`r as.character(format(Sys.time(), '%d %B %Y'))`"
+format: pdf
+---
+
+# Introduction
+
+## Problématique de recherche
+
+## Données et méthodes
+
+## Résultats
+
+# Conclusion
+
+# 
