@@ -3,7 +3,7 @@ knitr::opts_knit$set(root.dir = '.')
 ```
 
 ---
-title: "TP1 (introduction à GitHub et à Quarto)"
+title: "TP1 (FAS-1001)"
 author: "Claude Alie"
 date: "`r as.character(format(Sys.time(), '%d %B %Y'))`"
 format: pdf
