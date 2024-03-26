@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Claude Alie">
+
+<title>TP4</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="TP4_claude_alie_files/libs/clipboard/clipboard.min.js"></script>
+<script src="TP4_claude_alie_files/libs/quarto-html/quarto.js"></script>
+<script src="TP4_claude_alie_files/libs/quarto-html/popper.min.js"></script>
+<script src="TP4_claude_alie_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="TP4_claude_alie_files/libs/quarto-html/anchor.min.js"></script>
+<link href="TP4_claude_alie_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="TP4_claude_alie_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="TP4_claude_alie_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="TP4_claude_alie_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="TP4_claude_alie_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">TP4</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Claude Alie </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="avant-propos" class="level1">
+<h1>Avant propos</h1>
+<p>Ce texte étant un rapport d’étape dans la rédaction du travail final, il sera écrit comme un rapport d’étape. S’adressant au « superviseur » (ici le professeur) sur un ton semi-formel, on pourra y trouver des éléments ou formulations qui n’auraient pas lieu d’être dans une publication finale mais qui sont utiles en phase préparatoire (évocation de difficultés, d’options possibles, etc.). J’utiliserai le « nous » formel, même si je suis le seul auteur. Par ailleurs, j’ai encore des problèmes pour formatter mes références. Il me faudra consulter. J’utiliserai donc ici la manière manuelle de faire.</p>
+</section>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Lors du travail de mi-session, nous avons proposé d’étudier les traits de personnalité qui définissent la « triade sombre » en développant un dictionnaire dont les composantes devraient se fonder en grande partie sur l’étude de Sumner et al.&nbsp;(2012). Ces auteurs ont mis en relation statistique une série de caractéristiques linguistiques avec les traits de personnalité qui définissent la triade sombre telle que conçue par Delroy L. Paulhus et Kevin M. Williams (2002). Il serait donc possible d’utiliser leur travail, dont l’essentiel est consigné dans une table de leur article, comme fondement initial du dictionnaire à développer. Leur étude utilise un corpus de tweets pour vérifier leur question de recherche, à savoir s’il est possible de prédire les traits de personnalité de la triade sombre (narcissisme, machiavélisme et psychopathie) en utilisant comme prédicteurs des marqueurs linguistiques préalablement identifiés dans leur corpus comme étant statistiquement associés à ces traits. Il n’est pas possible dans le cadre de ce travail de session de développer ou d’utiliser des applications d’auto-évaluation de la personnalité sur les traits de la triade sombre. Une manière de contourner cette difficulté serait d’utiliser une variable de substitution (proxy) mettant en opposition sur un même sujet des tweets émanant d’individus dont le comportement irrationnel est assez évident et d’autres émanant d’individus clairement plus rationnels (par exemple, des complotistes et des scientifiques traitant de la COVID ou des changements climatiques). Cet dans cette optique que nous étudierons des Tweets des candidats à la présidentielle américaine de 2020. Ces tweets opposent seulement les deux candidats principaux à la présidentielles, à savoir Joe Biden et Joe Biden, mais ils sont facilement disponibles (une considération importante dans le présent contexte), et l’un d’entre eux, Donald Trump, a eu des comportements notoirement douteux. Celui-ci s’est fait poursuivre pour de nombreux litiges, dont certains criminels, et a déjà été condamné pour un certain d’entre eux. Bien que la mise en opposition de deux individus n’est pas représentative de la population des personnalités sombres vs.&nbsp;lumineuses, cela nous permettra de tester les instruments d’analyse psychométrique automatique en développement.</p>
+</section>
+<section id="résultats-du-scrapping" class="level1">
+<h1>Résultats du scrapping</h1>
+<p>Nous présentons ici les résultats obtenus par scrapping sous forme de tableaux ou d’images.</p>
+<section id="la-triade-sombre" class="level2">
+<h2 class="anchored" data-anchor-id="la-triade-sombre">La triade sombre</h2>
+<p>L’image de la triade sombre, tirée de la page Wikipédia anglaise (Wikipedia, Dark triad) permet de mettre en évidence les traits de personnalité en jeu dans les personnalités sombres, selon Delroy L. Paulhus et Kevin M. Williams (2002), à savoir le narcisissme, la machiavélisme et la psychopathie.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Downloaded: 300px-The_Dark_Triad.png 
+Downloaded: 138px-Dark_Triad.svg.png 
+Downloaded: 16px-Symbol_category_class.svg.png </code></pre>
+</div>
+</div>
+<div style="text-align:center">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="300px-The_Dark_Triad.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Triade sombre</figcaption>
+</figure>
+</div>
+</div>
+<section id="tableau-de-corrrélation-entre-les-variables-linguistiques-et-les-traits-de-la-triade-sombre-sumner-et-al.-2012" class="level3">
+<h3 class="anchored" data-anchor-id="tableau-de-corrrélation-entre-les-variables-linguistiques-et-les-traits-de-la-triade-sombre-sumner-et-al.-2012">Tableau de corrrélation entre les variables linguistiques et les traits de la triade sombre (Sumner et al., 2012)</h3>
+<p>Le tableau de corrélation Spearman entre les variables linguistiques investiguées par Sumner et al.&nbsp;(2012) et les traits de personnalité sombres ont été reproduits à l’identique par scrapping, comme le montre le glimpse suivant et le screenshot d’un extrait du tableau original de l’article. Notons que le fait qu’une des colonnes comporte des virgules (Examples) et le fait que les catégories n’ont pas de contenu dans leur rangée ont rendu particulièrement délicate le nettoyage du tableau scrappé en vue de sa conversion en csv.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 59
+Columns: 11
+$ V1  &lt;chr&gt; "Category", "Linguistic_Processes", "Words &gt; 6 letters", "Dictiona…
+$ V2  &lt;chr&gt; "Abbrev", "", "Sixltr", "Dic", "funct", "pronoun", "ppron", "i", "…
+$ V3  &lt;chr&gt; "Examples", "", "Words &gt; 6 letters", "Dictionary_words", "Total_Fu…
+$ V4  &lt;chr&gt; "Na", "", "0.047", "-0.088", "-0.093", "-0.043", "-0.021", "-0.017…
+$ V5  &lt;chr&gt; "Ma", "", "-0.078", "0.001", "0.021", "0.016", "0.021", "0.050", "…
+$ V6  &lt;chr&gt; "Ps", "", "-0.047", "-0.050", "-0.033", "-0.023", "-0.017", "-0.00…
+$ V7  &lt;chr&gt; "Op", "", "0.035", "-0.073", "-0.076", "-0.027", "-0.016", "-0.011…
+$ V8  &lt;chr&gt; "Co", "", "0.042", "-0.051", "-0.094", "-0.100", "-0.092", "-0.116…
+$ V9  &lt;chr&gt; "Ex", "", "0.042", "-0.031", "-0.046", "-0.004", "0.022", "-0.028"…
+$ V10 &lt;chr&gt; "Ag", "", "0.017", "-0.007", "-0.033", "-0.003", "0.013", "-0.023"…
+$ V11 &lt;chr&gt; "Ne", "", "0.079", "-0.113", "-0.123", "-0.142", "-0.145", "-0.171…</code></pre>
+</div>
+</div>
+<div style="text-align:center">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_correlations.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Triade sombre</figcaption>
+</figure>
+</div>
+</div>
+</section>
+</section>
+<section id="élection-présidentielle-américaine-de-2020" class="level2">
+<h2 class="anchored" data-anchor-id="élection-présidentielle-américaine-de-2020">Élection présidentielle américaine de 2020</h2>
+<section id="prédictions-de-lélection" class="level3">
+<h3 class="anchored" data-anchor-id="prédictions-de-lélection">Prédictions de l’élection</h3>
+<p>Les données ont été extraites du site Wikipédia Nationwide opinion polling for the 2020 United States presidential election, qui présente les résultats d’une série de sondages effectués peu avant l’élection présidentielle. Les données brutes ont d’abord été extraites et nettoyées, avant d’être regroupées et synthétisées pour obtenir des prédictions moyennes pour chaque candidat.</p>
+<section id="données-brutes" class="level4">
+<h4 class="anchored" data-anchor-id="données-brutes">Données brutes</h4>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 184
+Columns: 11
+$ source           &lt;chr&gt; "Ipsos/Reuters", "YouGov/Economist", "Research Co.", …
+$ date             &lt;chr&gt; "Oct 31", "Oct 31", "Oct 31", "Oct 29", "Oct 29", "Oc…
+$ error_margin     &lt;int&gt; 37, NA, 30, 32, 32, NA, NA, 17, 32, 32, NA, 1, NA, 22…
+$ Republicain_cand &lt;int&gt; 45, 43, 42, 46, 46, 42, 43, 46, 43, 45, 41, 47, 43, 4…
+$ Democrate_cand   &lt;int&gt; 52, 53, 50, 50, 51, 54, 54, 52, 48, 52, 53, 52, 53, 5…
+$ Libertarien_cand &lt;int&gt; NA, NA, 1, 2, NA, NA, NA, 2, 4, NA, 1, NA, NA, 2, 2, …
+$ Vert_cand        &lt;int&gt; NA, NA, 1, 1, NA, NA, NA, 0, 2, NA, 1, NA, NA, 1, 1, …
+$ Autres_cand      &lt;int&gt; 3, 2, 1, 1, NA, NA, NA, NA, 2, NA, NA, NA, 2, 2, NA, …
+$ Abstention_cand  &lt;int&gt; NA, 0, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 0, NA,…
+$ Indécis_cand     &lt;int&gt; NA, 2, 5, NA, NA, NA, NA, NA, 2, 3, NA, NA, 2, 1, NA,…
+$ lead             &lt;int&gt; 7, 10, 8, 4, 5, 12, 11, 6, 5, 7, 12, 5, 10, 10, 11, 8…</code></pre>
+</div>
+</div>
+</section>
+<section id="données-moyennes-après-traitement" class="level4">
+<h4 class="anchored" data-anchor-id="données-moyennes-après-traitement">Données moyennes après traitement</h4>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 6
+  source        date   error_margin  lead candidats        appui
+  &lt;chr&gt;         &lt;chr&gt;         &lt;int&gt; &lt;int&gt; &lt;chr&gt;            &lt;int&gt;
+1 Ipsos/Reuters Oct 31           37     7 Republicain_cand    45
+2 Ipsos/Reuters Oct 31           37     7 Democrate_cand      52
+3 Ipsos/Reuters Oct 31           37     7 Libertarien_cand    NA
+4 Ipsos/Reuters Oct 31           37     7 Vert_cand           NA
+5 Ipsos/Reuters Oct 31           37     7 Autres_cand          3
+6 Ipsos/Reuters Oct 31           37     7 Abstention_cand     NA</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  candidats   appui_moy
+  &lt;chr&gt;           &lt;dbl&gt;
+1 Abstention       1.38
+2 Autres           2.25
+3 Démocrate       51.4 
+4 Indécis          3.68
+5 Libertarien      1.70
+6 Républicain     42.6 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="résultats-des-élections" class="level3">
+<h3 class="anchored" data-anchor-id="résultats-des-élections">Résultats des élections</h3>
+<p>Les données des résultats de l’élection présidentielle de 2020 sont tirées du site Wikipédia 2020 United States presidential election. Les données brutes ont d’abord été extraites puis nettoyées pour obtenir un tableau de forme semblable au tableau de prédictions moyennes, de manière à permettre leur jointure.</p>
+<section id="données-brutes-1" class="level4">
+<h4 class="anchored" data-anchor-id="données-brutes-1">Données brutes</h4>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 8
+Columns: 9
+$ `Presidential candidate` &lt;chr&gt; "Presidential candidate", "Joe Biden", "Donal…
+$ Party                    &lt;chr&gt; "Party", "Democratic", "Republican", "Liberta…
+$ `Home state`             &lt;chr&gt; "Home state", "Delaware", "Florida", "South C…
+$ `Popular vote`           &lt;chr&gt; "Count", "81,283,501", "74,223,975", "1,865,5…
+$ `Popular vote`           &lt;chr&gt; "Percentage", "51.31%", "46.85%", "1.18%", "0…
+$ Electoralvote            &lt;chr&gt; "Electoralvote", "306", "232", "0", "0", "—",…
+$ `Running mate`           &lt;chr&gt; "Vice-presidential candidate", "Kamala Harris…
+$ `Running mate`           &lt;chr&gt; "Home state", "California", "Indiana", "South…
+$ `Running mate`           &lt;chr&gt; "Electoral vote", "306", "232", "0", "0", "—"…</code></pre>
+</div>
+</div>
+</section>
+<section id="données-après-nettoyage" class="level4">
+<h4 class="anchored" data-anchor-id="données-après-nettoyage">Données après nettoyage</h4>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  candidats   resultat
+  &lt;chr&gt;          &lt;dbl&gt;
+1 Démocrate      51.3 
+2 Républicain    46.8 
+3 Libertarien     1.18
+4 Vert            0.26
+5 Autres          0.41
+6 Total         100   </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="jonction-des-prédictions-et-des-résultats-des-élections" class="level3">
+<h3 class="anchored" data-anchor-id="jonction-des-prédictions-et-des-résultats-des-élections">Jonction des prédictions et des résultats des élections</h3>
+<p>Une fois les tableaux de prédictions moyennes et les résultats obtenus, ils ont été joints par la clé candidats et mis en format long afin de permettre leur visualisation en graphique à barre côte à côte :</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  candidats   appui_moy resultat
+  &lt;chr&gt;           &lt;dbl&gt;    &lt;dbl&gt;
+1 Autres          2.25      0.41
+2 Démocrate      51.4      51.3 
+3 Libertarien     1.70      1.18
+4 Républicain    42.6      46.8 
+5 Vert            0.906     0.26</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  candidats   Type      Support
+  &lt;chr&gt;       &lt;chr&gt;       &lt;dbl&gt;
+1 Autres      appui_moy    2.25
+2 Autres      resultat     0.41
+3 Démocrate   appui_moy   51.4 
+4 Démocrate   resultat    51.3 
+5 Libertarien appui_moy    1.70
+6 Libertarien resultat     1.18</code></pre>
+</div>
+</div>
+</section>
+<section id="visualisation-jointe-des-prédictions-et-des-résultats" class="level3">
+<h3 class="anchored" data-anchor-id="visualisation-jointe-des-prédictions-et-des-résultats">Visualisation jointe des prédictions et des résultats</h3>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="TP4_claude_alie_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="discussion" class="level1">
+<h1>Discussion</h1>
+<p>Rappelons d’abord que bien que le vote populaire ne constitue pas le critère électif d’une élection présidentielle dans un système à grands électeurs, il y a généralement correspondance. Comme le montre ce graphique, deux candidats se détachent nettement des autres, à savoir ceux des partis démocrate (Joe Biden) et républicain (Donald Trump), les autres candidats ne recueillant que des résultats marginaux. Par ailleurs, les prédictions moyennes du vote populaire sont en général relativement proches des résultats effectivement obtenus. Cependant, alors que celles sur la performance de Joe Biden se sont avérées très exactes, celles sur Donald Trump l’ont été beaucoup moins – il a fait mieux que prévu à la suite d’une remontée tardive lors de la soirée électorale. Enfin, alors que les prédictions laissaient entrevoir que Joe Biden emporterait facilement l’élection, le résultat s’est avéré finalement assez serré. Cependant, le système électoral américain est tel que malgré que Donald Trump ait recueilli 4% de votes de moins que Joe Biden (quelques 7 millions de votes), il n’aurait fallu environ qu’un faible pourcentage supplémentaire de votes (environ 32 507 dans quatre états clés auraient suffis pour qu’il remporte davantage de grands électeurs et gagne l’élection) (malgré son retard). Selon Nate Silver, il faut souvent un écart de deux à trois points de pourcentage en faveur du camp démocrate pour que celui-ci gagne (le Monde, 2020). Il s’agissait donc d’une situation frustrante pour le candidat républicain, qui l’a poussé à déclarer que l’élection lui avait été volée (Haberman et al., 2020), à se déclarer vainqueur, et à contester les résultats électoraux. Cette contestation l’a conduit à intenter des recours à la cour suprême, puis le 6 janvier 2021 à inciter ses partisans à l’insurrection, incitation largement reconnue comme facteur décisif dans la tentative de coup d’état qui s’en est suivie lors de l’assaut du Capitole. Il a en outre intenté une soixantaine de recours judiciaires dans plusieurs états, qui ont presque tous échoué (Cillizza, 2021), et provoqué un nouveau scandale en appelant le secrétaire d’État de la Georgie Brad Raffensperger de lui « trouver suffisamment de voix » pour renverser le résultat de cet état. Début janvier 2021, le président Trump provoque un nouveau scandale en appelant le secrétaire d’État de Géorgie, Brad Raffensperger, pour lui demander de « trouver suffisamment de voix » pour parvenir à « recalculer » le résultat de cet État (Je veux, Pire que le watergate). Ces agissements révèlent un côté sombre de la personnalité du candidat républicain. Il s’agira dans le travail final d’examiner si ce côté sombre se reflète dans son discours, tel qu’analysé avec un dictionnaire de personnalité de la triade sombre.</p>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>Dans cet exercice, nous avons obtenu quatre objets par scrapping, à savoir une image (tiré d’un site de l’encyclopédie Wikipédia), un tableau de corrélations sur les relations entre variables linguistiques et traits de personnalité sombre (tiré du pdf d’un article de revue), et deux tableaux de données sur le vote populaire prédit et effectif (tirés d’un site Wikipédia). Cet exercice nous a permis d’obtenir des informations utiles à notre recherche. L’image obtenus permettra de mieux visualiser le concept de triade sombre. Le tableau de corrélations fournira des informations utiles à l’élaboration du dictionnaire (qui pourront éventuellement être reformatée pour faciliter ce processus). Et les tableaux graphiques de vote populaire permettent une visualisation qui permettent, de manière synthétique, de faire une mise en contexte utile à l’interprétation des résultats. Cependant, l’exercice demeure problématique de différentes manières. Un premier problème est bien sûr celui des droits d’auteur. À priori, les trois objets obtenus sur Wikipédia semblent poser peu de problèmes à cet égard, du moment que la provenance de ces objets soit dûment spécifiée par référence. En effet, cette encyclopédie est en source libre, et les articles peuvent légalement être édités par quiconque pour peu que les auteurs soient inscrits comme auteurs et suivent le protocole d’édition. La chose se complique cependant du fait que les tableaux obtenus peuvent avoir été rédigés par d’autres auteurs ou firmes. Ainsi, le tableau des prédictions aux élections américaines est un agrégat de sondage effectués par plusieurs firmes. Mais, de par leur nature, les sondages sont faits pour être cités, moyennant les références d’usage. Le cas de l’image de la triade sombre n’est pas tellement différent : les images de Wikipédia sont libres de droits, conditionnellement au référencement d’usage, ce qui a bien sûr été fait ici. Un lien spécifie même comment une image de Wikipédia peut être réutilisée en dehors du site : il faut vérifier les exigences particulières de chacune et en créditer l’auteur. Tout cela doit être vérifié et fait, et ne pose pas de problème particulier lorsque le scrapping se fait à petite échelle, comme c’est le cas ici. En ce qui concerne le tableau tiré du pdf, la chose est un peu plus complexe car nous avons extrait un large tableau de données tiré d’un article publié soumis à des droits d’auteurs stricts. Pour son usage intégral dans une autre publication, il faudrait obtenir le consentement de l’auteur et du journal, ce qui pourrait poser problème. Mais si le tableau n’est pas montré et est utilisé pour faciliter d’autres analyses (comme pour l’élaboration d’une dictionnaire) ou encore pour faciliter la rédaction de la revue de littérature, un tel usage ne pose pas de problème autre que la citation usuelle des sources. Ceci dit, si le scrapping se produit à plus grande échelle, de nouveaux problèmes émergent, et ceux de droits d’auteurs ci-haut mentionnés peuvent exploser. Ces derniers problèmes peuvent cependant être considérablement tempérés si on utilise les objets ainsi obtenus pour l’élaboration d’une base de données afin d’en tirer des analyses agrégées et anonymisées, sans publier les données brutes. Là encore, la citation des sources s’impose. Par ailleurs, le scrapping à grande échelle fait apparaître avec plus d’acuité de potentiels problèmes d’intrusion : on comprend qu’en règle générale, un site n’a pas été conçu dans le but de se faire siphonner son contenu. Il faut à cet égard s’astreindre à une règle simple : n’extraire que des données publiques ou acquises avec permission. Il peut être justifié cependant d’user de subterfuges pour obtenir dans pour l’intérêt public (recherche scientifique, etc.) des données publiques que les gestionnaires rechignent à livrer (données gênantes pour le gouvernement, etc.). Enfin, le scrapping à grande échelle peut poser des problèmes de perturbation du site. Un usage automatisé d’un site peut nuire à sa fluidité. Il existe une panoplie de bonne pratiques à cet égard (délais de requêtes, etc.) pour limiter ce type d’inconvénients, que les professionnels compétents de l’art du scrapping doivent impérativement maîtriser. Des paquetages de scrapping et des APIs intégrant cette gestion sont et doivent être disponibles.</p>
+</section>
+<section id="références" class="level1">
+<h1>Références</h1>
+<p>C. Sumner, A. Byers, R. Boochever, and G. J. Park, “Predicting dark triad personality traits from twitter usage and a linguistic analysis of tweets,” 2012, doi: 10.1109/ICMLA.2012.218.</p>
+<p>Paulhus, D. L., &amp; Williams, K. M. (2002). The dark side of normal personality: Self-report andbehavioral correlates. Unpublished manuscript, University of British Columbia.</p>
+<p>Maggie Haberman, Nick Corasaniti, Jim Rutenberg et Alan Feuer, « Trump tries to subvert the election, inviting Michigan G.O.P. lawmakers to the White House. », The New York Times,‎ 19 novembre 2020 (ISSN 0362-4331, lire en ligne [archive], consulté le 28 novembre 2020)</p>
+<p>Analysis by Chris Cillizza, CNN Editor-at-large, « How suing Mike Pence is the last gasp of the ‘election fraud’ crowd [archive] », sur CNN (consulté le 1er janvier 2021)</p>
+<p>Dark Triad. Wikipedia contributors. Wikipedia, The Free Encyclopedia. [https://en.wikipedia.org/wiki/Dark_triad] Accessed: [consulté le 25 mars 2024]</p>
+<p>Nationwide opinion polling for the 2020 United States presidential election. Wikipedia contributors. Wikipedia, The Free Encyclopedia. [https://en.wikipedia.org/wiki/Nationwide_opinion_polling_for_the_2020_United_States_presidential_election] Accessed: [consulté le 25 mars 2024]</p>
+<p>2020 United States presidential election. Wikipedia contributors. Wikipedia, The Free Encyclopedia. [https://en.wikipedia.org/wiki/2020_United_States_presidential_election] Accessed: [consulté le 25 mars 2024]</p>
+</section>
+<section id="annexe-code" class="level1">
+<h1>Annexe: Code</h1>
+<section id="triade-sombre-des-traits-de-personnalité" class="level2">
+<h2 class="anchored" data-anchor-id="triade-sombre-des-traits-de-personnalité">Triade sombre des traits de personnalité</h2>
+<section id="scrapping-des-images-sur-la-triade-sombre-tirée-de-larticle-wikipedia-sur-cette-question" class="level3">
+<h3 class="anchored" data-anchor-id="scrapping-des-images-sur-la-triade-sombre-tirée-de-larticle-wikipedia-sur-cette-question">Scrapping des images sur la triade sombre tirée de l’article wikipedia sur cette question</h3>
+<section id="chercher-les-url" class="level4">
+<h4 class="anchored" data-anchor-id="chercher-les-url">Chercher les url</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://en.wikipedia.org/wiki/Dark_triad"</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>webpage <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>img_tags <span class="ot">&lt;-</span> <span class="fu">html_nodes</span>(webpage, <span class="st">".mw-file-element"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>img_attr <span class="ot">&lt;-</span> <span class="fu">html_attr</span>(img_tags, <span class="st">"src"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>img_urls <span class="ot">&lt;-</span> img_attr[<span class="fu">grep</span>(<span class="st">"^//"</span>, img_attr)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="extraire-chaque-image" class="level4">
+<h4 class="anchored" data-anchor-id="extraire-chaque-image">Extraire chaque image</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (url <span class="cf">in</span> img_urls) {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"https:"</span>, url)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  filename <span class="ot">&lt;-</span> <span class="fu">basename</span>(url)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tryCatch</span>({</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">GET</span>(url, <span class="fu">write_disk</span>(filename))</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"Downloaded:"</span>, filename, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  }, <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"Failed to download:"</span>, filename, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="scrapping-dun-tableau-de-prédicteurs-probables-de-la-triade-sombre" class="level3">
+<h3 class="anchored" data-anchor-id="scrapping-dun-tableau-de-prédicteurs-probables-de-la-triade-sombre">Scrapping d’un tableau de prédicteurs probables de la triade sombre</h3>
+<section id="extraction-du-texte-du-pdf-où-se-trouve-le-tableau" class="level4">
+<h4 class="anchored" data-anchor-id="extraction-du-texte-du-pdf-où-se-trouve-le-tableau">Extraction du texte du pdf où se trouve le tableau</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pdf_text <span class="ot">&lt;-</span> <span class="fu">pdf_text</span>(<span class="st">"../_data/Predicting-Dark-Triad-Personality-Traits-from-Twitter-Usage-and-a-Linguistic-Analysis-of-Tweets.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="localisation-du-tableau-dans-le-contenu-pdf" class="level4">
+<h4 class="anchored" data-anchor-id="localisation-du-tableau-dans-le-contenu-pdf">Localisation du tableau dans le contenu pdf</h4>
+<p>On va à la page 6.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>page_text <span class="ot">&lt;-</span> pdf_text[<span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>On segmente la page 6 en lignes</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>lines <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(page_text, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>On identifie le début et la fin du tableau et on extrait son contenu Le début du tableau est identifié par son titfre, qui commence par “Table” La fin du tableau est identifiée par la première ligne vide. On cherche donc une chaîne vide (““). On ajoute chaque ligne se trouvant entre ces limites.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>table_title <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>table_started <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>table_content <span class="ot">&lt;-</span> <span class="fu">character</span>()</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (line <span class="cf">in</span> lines) {</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"^Table [IVXLC]+</span><span class="sc">\\</span><span class="st">s*:"</span>, line)) {</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    table_title <span class="ot">&lt;-</span> line</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    table_started <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (table_started <span class="sc">&amp;&amp;</span> line <span class="sc">==</span> <span class="st">""</span>) {</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (table_started) {</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    table_content <span class="ot">&lt;-</span> <span class="fu">c</span>(table_content, line)</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="nettoyage-du-tableau" class="level4">
+<h4 class="anchored" data-anchor-id="nettoyage-du-tableau">Nettoyage du tableau</h4>
+<p>On complète d’abord les lignes des sous-titres pour obtenir le même nombre de colonnes partout.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(table_content)) {</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">"     "</span>, table_content[[i]])) {</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    table_content[[i]] <span class="ot">&lt;-</span> <span class="fu">paste0</span>(table_content[[i]], <span class="st">"---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----"</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>On remplace les autres éléments susceptibles d’affecter le nombre de colonnes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>replacements <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">", "</span> <span class="ot">=</span> <span class="st">";"</span>,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Words &gt; 6 letters"</span> <span class="ot">=</span> <span class="st">"Words_more_6_letters"</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">", "</span> <span class="ot">=</span> <span class="st">";"</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"AllPct"</span> <span class="ot">=</span> <span class="st">"AllPct ----  "</span>,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"([A-Za-z])</span><span class="sc">\\</span><span class="st">s([A-Za-z])"</span> <span class="ot">=</span> <span class="st">"</span><span class="sc">\\</span><span class="st">1_</span><span class="sc">\\</span><span class="st">2"</span>,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"----"</span> <span class="ot">=</span> <span class="st">","</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>replacements <span class="ot">&lt;-</span> <span class="fu">unlist</span>(replacements)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>table_content[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(table_content[<span class="dv">1</span>], <span class="st">"</span><span class="sc">\\</span><span class="st">s+"</span>, <span class="st">" "</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(table_content)) {</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  table_content[i] <span class="ot">&lt;-</span> <span class="fu">as.character</span>(table_content[i])</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (pattern <span class="cf">in</span> <span class="fu">names</span>(replacements)) {</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    table_content[i] <span class="ot">&lt;-</span> <span class="fu">gsub</span>(pattern, replacements[pattern], table_content[i])</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>On élimine les blancs redondants.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(table_content)) {</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (pattern <span class="cf">in</span> <span class="fu">names</span>(replacements)) {</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    table_content[i] <span class="ot">&lt;-</span> <span class="fu">str_squish</span>(table_content[i])</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>table_content[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(table_content[<span class="dv">1</span>], <span class="st">" Category"</span>, <span class="st">"Category"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>On convertit le tableau en data.frame.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (row <span class="cf">in</span> table_content) {</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  words <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(row, <span class="st">" "</span>))</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  words_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(words)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  words_df <span class="ot">&lt;-</span> <span class="fu">t</span>(words_df)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(df, words_df)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df[<span class="sc">-</span><span class="fu">nrow</span>(df), ] <span class="co"># La dernière rangée est un doublon</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>On effectue les dernières corrections plus faciles à effectuer en data.frame.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">lapply</span>(df, <span class="cf">function</span>(x) <span class="fu">gsub</span>(<span class="st">" Category"</span>, <span class="st">"Category"</span>, x)))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">lapply</span>(df, <span class="cf">function</span>(x) <span class="fu">gsub</span>(<span class="st">"Words_more_6_letters"</span>, <span class="st">"Words &gt; 6 letters"</span>, x)))</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">lapply</span>(df, <span class="cf">function</span>(x) <span class="fu">gsub</span>(<span class="st">","</span>, <span class="st">""</span>, x)))</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">lapply</span>(df, <span class="cf">function</span>(x) <span class="fu">gsub</span>(<span class="st">";"</span>, <span class="st">", "</span>, x)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>On affiche le résultat:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="élections-américaines-de-2020" class="level2">
+<h2 class="anchored" data-anchor-id="élections-américaines-de-2020">Élections américaines de 2020</h2>
+<section id="prédictions-des-élections" class="level3">
+<h3 class="anchored" data-anchor-id="prédictions-des-élections">Prédictions des élections</h3>
+<section id="scrapping-dun-tableau-de-données-wiki-sur-les-prédictions" class="level4">
+<h4 class="anchored" data-anchor-id="scrapping-dun-tableau-de-données-wiki-sur-les-prédictions">Scrapping d’un tableau de données Wiki sur les prédictions</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>Polls_data <span class="ot">&lt;-</span> <span class="fu">read_html</span>(</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"https://en.wikipedia.org/wiki/Nationwide_opinion_polling_for_the_2020_United_States_presidential_election"</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">### Chercher l'élément (ou node) "table" </span><span class="al">###</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">"table"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="do">### Chercher le deuxième élément (ou table) de la liste </span><span class="al">###</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pluck</span>(<span class="dv">7</span>) <span class="sc">|&gt;</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="do">### Transformation en matrice de données </span><span class="al">###</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill =</span> T) <span class="sc">|&gt;</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="do">### renommer les variables pertinentes </span><span class="al">###</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">source =</span> <span class="st">"Poll source"</span>,</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">date =</span> <span class="st">"Date"</span>,</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">sample_size =</span> <span class="st">"Samplesize[b]"</span>,</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">error_margin =</span> <span class="st">"Marginof error"</span>,</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">Republicain_cand =</span> <span class="st">"DonaldTrump.mw-parser-output .nobold{font-weight:normal}Republican"</span>,</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">Democrate_cand =</span> <span class="st">"JoeBidenDemocratic"</span>,</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">Libertarien_cand =</span> <span class="st">"JoJorgensenLibertarian"</span>,</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">Vert_cand =</span> <span class="st">"HowieHawkinsGreen"</span>,</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">Autres_cand =</span> <span class="st">"Other"</span>,</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">Abstention_cand =</span> <span class="st">"Abstention"</span>,</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>         Indécis<span class="at">_cand =</span> <span class="st">"Undecided"</span>,</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">lead =</span> <span class="st">"Lead"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Enlever des rangées inutiles</span></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(source <span class="sc">!=</span> <span class="st">""</span>) <span class="sc">|&gt;</span></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Retirer les variable inutiles #</span></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(sample_size)) <span class="sc">|&gt;</span></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Transformer en numérique les variables pertinentes</span></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(error_margin<span class="sc">:</span>lead), <span class="sc">~</span> <span class="fu">gsub</span>(<span class="st">"[^0-9]"</span>, <span class="st">""</span>, .)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">sub</span>(<span class="st">" –.*"</span>, <span class="st">""</span>, date))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="sauvegarde-des-données-pour-pouvoir-les-relire-sans-scrapper-à-nouveau" class="level4">
+<h4 class="anchored" data-anchor-id="sauvegarde-des-données-pour-pouvoir-les-relire-sans-scrapper-à-nouveau">Sauvegarde des données (pour pouvoir les relire sans scrapper à nouveau)</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(Polls_data, <span class="at">file =</span> <span class="st">"Polls_data.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>Polls_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Polls_data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="nettoyage-des-données" class="level4">
+<h4 class="anchored" data-anchor-id="nettoyage-des-données">Nettoyage des données</h4>
+<section id="conversion-des-données-en-format-long" class="level6">
+<h6 class="anchored" data-anchor-id="conversion-des-données-en-format-long">Conversion des données en format long</h6>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>dat_long <span class="ot">&lt;-</span> Polls_data <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">ends_with</span>(<span class="st">"_cand"</span>), <span class="at">names_to =</span> <span class="st">"candidats"</span>, <span class="at">values_to =</span> <span class="st">"appui"</span>)  </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="préparation-des-données-moyennes" class="level6">
+<h6 class="anchored" data-anchor-id="préparation-des-données-moyennes">Préparation des données moyennes</h6>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>dat_pred_2020 <span class="ot">&lt;-</span> dat_long <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(candidats) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">appui_moy =</span> <span class="fu">mean</span>(<span class="fu">as.numeric</span>(appui), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">candidats =</span> <span class="fu">sub</span>(<span class="st">"_cand"</span>, <span class="st">""</span>, candidats),</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">candidats =</span> <span class="fu">case_when</span>(</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>           candidats <span class="sc">==</span> <span class="st">"Democrate"</span> <span class="sc">~</span> <span class="st">"Démocrate"</span>,</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>           candidats <span class="sc">==</span> <span class="st">"Republicain"</span> <span class="sc">~</span> <span class="st">"Républicain"</span>,</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>           <span class="cn">TRUE</span> <span class="sc">~</span> candidats</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>         ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="résultats-des-élections-1" class="level3">
+<h3 class="anchored" data-anchor-id="résultats-des-élections-1">Résultats des élections</h3>
+<section id="scrapping-des-données" class="level4">
+<h4 class="anchored" data-anchor-id="scrapping-des-données">Scrapping des données</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>Table_results_2020 <span class="ot">&lt;-</span> <span class="fu">read_html</span>(</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"https://en.wikipedia.org/wiki/2020_United_States_presidential_election"</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">### Chercher l'élément (ou node) "table"</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">"table"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="do">### Chercher le deuxième élément (ou table) de la liste</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pluck</span>(<span class="dv">28</span>) <span class="sc">|&gt;</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="do">### Transformation en matrice de données</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="nettoyage-des-données-1" class="level4">
+<h4 class="anchored" data-anchor-id="nettoyage-des-données-1">Nettoyage des données</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>dat_resultats_2020 <span class="ot">&lt;-</span> Table_results_2020 <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">2</span>, <span class="dv">5</span>) <span class="sc">|&gt;</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">candidats =</span> <span class="st">"Party"</span>,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">resultat =</span> <span class="st">"Popular vote"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">resultat =</span> <span class="fu">as.numeric</span>(<span class="fu">str_remove</span>(resultat, <span class="st">"%"</span>)),</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">candidats =</span> <span class="fu">case_when</span>(</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>           candidats <span class="sc">==</span> <span class="st">"Democratic"</span> <span class="sc">~</span> <span class="st">"Démocrate"</span>,</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>           candidats <span class="sc">==</span> <span class="st">"Republican"</span> <span class="sc">~</span> <span class="st">"Républicain"</span>,</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>           candidats <span class="sc">==</span> <span class="st">"Libertarian"</span> <span class="sc">~</span> <span class="st">"Libertarien"</span>,</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>           candidats <span class="sc">==</span> <span class="st">"Other"</span> <span class="sc">~</span> <span class="st">"Autres"</span>,</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>           candidats <span class="sc">==</span> <span class="st">"Green"</span> <span class="sc">~</span> <span class="st">"Vert"</span>,</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>           <span class="cn">TRUE</span> <span class="sc">~</span> candidats))</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>dat_resultats_2020</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="jonction-des-prédictions-et-des-résultats-des-élections-1" class="level3">
+<h3 class="anchored" data-anchor-id="jonction-des-prédictions-et-des-résultats-des-élections-1">Jonction des prédictions et des résultats des élections</h3>
+<section id="jonction-par-candidats" class="level4">
+<h4 class="anchored" data-anchor-id="jonction-par-candidats">Jonction par candidats</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>joined_data <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(dat_pred_2020, dat_resultats_2020, <span class="at">by =</span> <span class="st">"candidats"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="transformation-en-format-long" class="level3">
+<h3 class="anchored" data-anchor-id="transformation-en-format-long">Transformation en format long</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>long_data <span class="ot">&lt;-</span> joined_data <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(appui_moy, resultat),</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"Type"</span>,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"Support"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="visualisation-des-résultats-joints" class="level3">
+<h3 class="anchored" data-anchor-id="visualisation-des-résultats-joints">Visualisation des résultats joints</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(long_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(candidats, Support), <span class="at">y =</span> Support, <span class="at">fill =</span> Type)) <span class="sc">+</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Support pour les candidats"</span>,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Candidats"</span>,</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Support"</span>) <span class="sc">+</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">"Type de support"</span>,</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"appui_moy"</span> <span class="ot">=</span> <span class="st">"Prédictions"</span>, <span class="st">"resultat"</span> <span class="ot">=</span> <span class="st">"Résultats"</span>),</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"appui_moy"</span> <span class="ot">=</span> <span class="st">"skyblue"</span>, <span class="st">"resultat"</span> <span class="ot">=</span> <span class="st">"orange"</span>),</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">breaks =</span> <span class="fu">c</span>(<span class="st">"resultat"</span>, <span class="st">"appui_moy"</span>)) <span class="sc">+</span>   <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">number_format</span>(<span class="at">suffix =</span> <span class="st">"%"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
